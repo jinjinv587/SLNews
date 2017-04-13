@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">皇家沈理</string>
+    <string name="query">查询成绩</string>
+    <string name="password">请输入密码</string>
+    <string name="xh">请输入学号</string>
+    <string name="jisuan">计算绩点</string>
+    <string name="jisuan1">计算</string>
+    <string name="jisuanxueweike">计算学位课绩点</string>
+    <string name="nochooce">当前未选中任何科目</string>
+    <string name="all">全选</string>
+    <string name="_qq_913214983">有问题请反馈至QQ:913214983</string>
+    <string name="_passsword">"密码 : "</string>
+    <string name="_xh">"学号 : "</string>
+
+</resources>

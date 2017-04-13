@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/sylg"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/title"
+        android:text="成绩查询" />
+
+    <LinearLayout
+        style="@style/w_p_h_c"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/background_corners"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            style="@style/w_p_h_c"
+            android:padding="15.0dip" >
+
+            <TextView
+                android:id="@+id/login_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_xh"
+                android:textSize="17.0sp" />
+
+            <EditText
+                android:id="@+id/et_xh"
+                style="@style/w_p_h_c"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_toRightOf="@+id/login_username"
+                android:background="@null"
+                android:focusableInTouchMode="true"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+        <View style="@style/my_Line" />
+
+        <RelativeLayout
+            style="@style/w_p_h_c"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="10.0dip"
+            android:paddingLeft="15.0dip"
+            android:paddingTop="10.0dip" >
+
+            <TextView
+                android:id="@+id/login_password"
+                style="@style/w_c_h_c"
+                android:layout_centerVertical="true"
+                android:text="@string/_passsword"
+                android:textSize="17.0sp" />
+
+            <CheckBox
+                android:id="@+id/login_switchBtn"
+                android:layout_width="55.0dip"
+                android:layout_height="21.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5.0dip"
+                android:button="@drawable/login_hide_password_selector"
+                android:clickable="true" />
+
+            <EditText
+                android:id="@+id/et_pw"
+                style="@style/w_p_h_c"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_toLeftOf="@id/login_switchBtn"
+                android:layout_toRightOf="@id/login_password"
+                android:background="@null"
+                
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dip"
+            android:background="@drawable/button_selector"
+            android:text="@string/query" />
+
+        <Button
+            android:id="@+id/calc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/button_selector"
+            android:text="@string/jisuan" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+
+</LinearLayout>

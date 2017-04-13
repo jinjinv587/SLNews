@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+      android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/title"
+        android:text="联系我们" />
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="有问题请反馈：QQ:913214983\n邮箱:913214983@qq.com"
+        android:textSize="20sp" />
+
+</RelativeLayout>
