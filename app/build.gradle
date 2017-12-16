@@ -6,14 +6,14 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
-    signingConfigs {
-        slhelper {
-            keyAlias 'helper'
-            keyPassword '758454'
-            storeFile file('F:/important/slhelper.keystore')
-            storePassword '758454'
-        }
-    }
+//    signingConfigs {
+//        slhelper {
+//            keyAlias 'helper'
+//            keyPassword '758454'
+//            storeFile file('F:/important/slhelper.keystore')
+//            storePassword '758454'
+//        }
+//    }
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
     defaultConfig {
@@ -30,11 +30,11 @@ android {
             //是否混淆
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.slhelper
+            //signingConfig signingConfigs.slhelper
         }
         debug {
             debuggable true
-            signingConfig signingConfigs.slhelper
+            //signingConfig signingConfigs.slhelper
         }
     }
     //不加这句会Error:(4) Error: "ssdk_instapager_login_html" is not translated in "en"
