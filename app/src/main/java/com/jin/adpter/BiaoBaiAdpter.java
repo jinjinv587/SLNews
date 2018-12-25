@@ -30,7 +30,7 @@ public class BiaoBaiAdpter extends BaseAdapter {
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final String cahe = CacheUtils.getCache("zan", mActivity);
-		ViewHolder holder = null;
+		ViewHolder holder;
 		if (convertView == null) {
 			// 获得ViewHolder对象
 			holder = new ViewHolder();
