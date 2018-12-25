@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':commonlibrary'
+project(':commonlibrary').projectDir = new File('D:\\AndroidStudio_WorkSpace\\commonlibrary')

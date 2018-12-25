@@ -1,7 +1,11 @@
 package com.jin.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -17,6 +21,7 @@ import android.widget.Toast;
 
 import com.jin.adpter.MyListViewAdapter;
 import com.jin.domain.ScoreSearchInfo;
+import com.jin.slnews.BuildConfig;
 import com.jin.slnews.CalcActivity;
 import com.jin.slnews.R;
 import com.jin.slnews.ScoreSearchDown;
@@ -32,6 +37,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ChengJiFragment extends BaseFragment {
@@ -98,11 +104,34 @@ public class ChengJiFragment extends BaseFragment {
     MyListViewAdapter myListViewAdapter = null;
     public static Handler handler;
 
+    public boolean checkApkExist(Context context, String packageName) {
+        if (packageName == null || "".equals(packageName))
+            return false;
+        try {
+            ApplicationInfo info = context.getPackageManager().getApplicationInfo(packageName,
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
     @Override
     public View initViews() {
         View view = View.inflate(mActivity, R.layout.fragment_chengji, null);
         ViewUtils.inject(this, view); // 注入view和事件
+        view.findViewById(R.id.tv_kefu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                if (checkApkExist(mActivity, "com.tencent.mobileqq")) {
+                    mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=913214983&version=1")));
+                } else {
+                    Toast.makeText(mActivity, "检查到您手机没有安装QQ，请安装后使用该功能", Toast.LENGTH_LONG).show();
+//                    DialogUtils.alertInfo(mActivity, "检查到您手机没有安装QQ，请安装后使用该功能");
+                }
+            }
+        });
         return view;
     }
 
@@ -354,12 +383,14 @@ public class ChengJiFragment extends BaseFragment {
                         // 给listview设置适配器
                         if (myListViewAdapter == null) {
                             if (list != null && list.size() > 0) {
+                                Collections.reverse(list);
                                 myListViewAdapter = new MyListViewAdapter(list, mActivity);
                                 lv.setAdapter(myListViewAdapter);
                                 calc.setVisibility(View.VISIBLE);
                             }
                         } else {
                             if (list != null && list.size() > 0) {
+                                Collections.reverse(list);
                                 myListViewAdapter.setData(list);
                                 myListViewAdapter.notifyDataSetChanged();
                                 calc.setVisibility(View.VISIBLE);

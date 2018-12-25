@@ -6,7 +6,7 @@
     android:background="@drawable/back"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_title"
@@ -17,8 +17,7 @@
         android:id="@+id/lv"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
-    </ListView>
+        android:layout_weight="1"></ListView>
 
     <TextView
         android:id="@+id/tv_show"
@@ -32,27 +31,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/bt_calc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_selector"
-            android:text="@string/jisuanxueweike" />
+            android:text="@string/jisuanxueweike"
+            android:textColor="@color/white" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1" >
-        </View>
+            android:layout_weight="1"></View>
 
         <Button
             android:id="@+id/bt_selectall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_selector"
-            android:text="@string/all" />
+            android:text="@string/all"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>

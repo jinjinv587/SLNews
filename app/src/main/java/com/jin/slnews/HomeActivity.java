@@ -21,7 +21,6 @@ import com.jin.fragment.ZhaoLingFragment;
 import com.jin.utils.AutoUpdate;
 import com.jin.utils.SharedPreferencesUtils;
 import com.jin.utils.ViewUtils;
-import com.jin.views.CustomDialog;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -30,8 +29,7 @@ public class HomeActivity extends FragmentActivity {
     private int index;
     // 当前fragment的index
     private int currentTabIndex = 2;
-    RadioGroup rg_bottom;
-    private CustomDialog dialog;
+    private RadioGroup rg_bottom;
     public static Handler handler;
 
     @Override
@@ -60,7 +58,7 @@ public class HomeActivity extends FragmentActivity {
 //        }
 
         AutoUpdate.check(this, SharedPreferencesUtils.getVersion(this));
-        rg_bottom = (RadioGroup) findViewById(R.id.rg_bottom);
+        rg_bottom = findViewById(R.id.rg_bottom);
         rg_bottom.check(R.id.rb_chengji);// 默认勾选成绩
 
         ShouYeFragment shouYeFragment = new ShouYeFragment();
@@ -70,43 +68,44 @@ public class HomeActivity extends FragmentActivity {
         WoDeFragment woDeFragment = new WoDeFragment();
         fragments = new Fragment[]{shouYeFragment, zhaoLingFragment, chengJiFragment, biaoBaiFragment, woDeFragment};
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content, chengJiFragment)
-                .add(R.id.fl_content, shouYeFragment).hide(shouYeFragment)
-                .add(R.id.fl_content, biaoBaiFragment).hide(biaoBaiFragment)
-                .add(R.id.fl_content, woDeFragment).hide(woDeFragment)
-                .add(R.id.fl_content, zhaoLingFragment).hide(zhaoLingFragment).commit();
+                //.add(R.id.fl_content, shouYeFragment).hide(shouYeFragment)
+                //.add(R.id.fl_content, biaoBaiFragment).hide(biaoBaiFragment)
+                // .add(R.id.fl_content, woDeFragment).hide(woDeFragment)
+                // .add(R.id.fl_content, zhaoLingFragment).hide(zhaoLingFragment)
+                .commit();
 
-        rg_bottom.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                switch (arg1) {
-                    case R.id.rb_shouye:
-                        Toast.makeText(HomeActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
-                        //index = 0;
-                        break;
-                    case R.id.rb_zhaoling:
-                        index = 1;
-                        break;
-                    case R.id.rb_chengji:
-                        index = 2;
-                        break;
-                    case R.id.rb_geren:
-                        index = 4;
-                        break;
-                    case R.id.rb_biaobai:
-                        //Toast.makeText(HomeActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
-                         index = 3;
-                        break;
-                }
-                if (currentTabIndex != index) {
-                    FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
-                    trx.hide(fragments[currentTabIndex]);
-                    trx.show(fragments[index]).commit();
-                }
-                currentTabIndex = index;
-
-            }
-        });
+//        rg_bottom.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(RadioGroup arg0, int arg1) {
+//                switch (arg1) {
+//                    case R.id.rb_shouye:
+//                        //Toast.makeText(HomeActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+//                        //index = 0;
+//                        break;
+//                    case R.id.rb_zhaoling:
+//                        index = 1;
+//                        break;
+//                    case R.id.rb_chengji:
+//                        index = 2;
+//                        break;
+//                    case R.id.rb_geren:
+//                        index = 4;
+//                        break;
+//                    case R.id.rb_biaobai:
+//                        //Toast.makeText(HomeActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
+//                        index = 3;
+//                        break;
+//                }
+//                if (currentTabIndex != index) {
+//                    FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
+//                    trx.hide(fragments[currentTabIndex]);
+//                    trx.show(fragments[index]).commit();
+//                }
+//                currentTabIndex = index;
+//
+//            }
+//        });
     }
 
     @Override

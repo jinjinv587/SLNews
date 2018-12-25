@@ -7,7 +7,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -189,6 +191,18 @@ public class AutoUpdate {
                     // 跳转到系统安装页面
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.addCategory(Intent.CATEGORY_DEFAULT);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        Uri contentUri = FileProvider.getUriForFile(mActivity, "com.jin.slnews.fileProvider", arg0.result);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+                    } else {
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setDataAndType(Uri.fromFile(arg0.result), "application/vnd.android.package-archive");
+                    }
+
+
                     intent.setDataAndType(Uri.fromFile(arg0.result), "application/vnd.android.package-archive");
                     // startActivity(intent);
                     mActivity.startActivityForResult(intent, 0);// 如果用户取消安装的话,

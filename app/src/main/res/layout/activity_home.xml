@@ -19,6 +19,7 @@
         android:background="@color/navbg"
         android:orientation="horizontal"
         android:paddingBottom="8dp"
+        android:visibility="gone"
         android:paddingTop="8dp" >
 
         <RadioButton
@@ -49,7 +50,7 @@
             android:id="@+id/rb_geren"
             style="@style/nav_rg"
             android:drawableTop="@drawable/btn_tab_geren_selector"
-            android:text="设置" />
+            android:text="我的" />
     </RadioGroup>
 
 </LinearLayout>
