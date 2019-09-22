@@ -40,8 +40,7 @@
                 android:background="@null"
                 android:focusableInTouchMode="true"
                 android:inputType="number"
-                android:singleLine="true"
-                android:text="1602020202" />
+                android:singleLine="true"/>
         </RelativeLayout>
 
         <View style="@style/my_Line" />
@@ -80,8 +79,7 @@
                 android:layout_toRightOf="@id/login_password"
                 android:background="@null"
                 android:inputType="textPassword"
-                android:singleLine="true"
-                android:text="654321" />
+                android:singleLine="true"/>
         </RelativeLayout>
     </LinearLayout>
 
