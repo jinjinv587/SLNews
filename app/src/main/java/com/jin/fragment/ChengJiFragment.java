@@ -202,8 +202,7 @@ public class ChengJiFragment extends BaseFragment {
                     String xuewei = (String) SharedPreferencesUtils.getParam(mActivity, et_xh.getText().toString().trim().substring(0, 6), "");
                     if (xuewei.equals("") || xuewei.length() == 0) {
                         // 查询所有学位课
-                        // TODO: 2019/9/22  
-//                        new XeiWeiKeSearchDown(mActivity, xh, pw, handler).getSocre(true);
+                        new XeiWeiKeSearchDown(mActivity, xh, pw, handler).getSocre(true);
                         isLoading = true;
                         // progressDialog = ProgressDialog.show(mActivity,
                         // "请稍等...", "获取数据中...", true);
@@ -223,7 +222,7 @@ public class ChengJiFragment extends BaseFragment {
         // 通过id找到界面中的密码输入框EditText
         et_pw = mActivity.findViewById(R.id.et_pw);
         tv_version = mActivity.findViewById(R.id.tv_version);
-        tv_version.setText(BuildConfig.VERSION_NAME);
+        tv_version.setText("V" + BuildConfig.VERSION_NAME);
         // 得到SharedPreferences中的学号和密码
         String sp_userxh = (String) SharedPreferencesUtils.getParam(mActivity, "userxh", "");
         String sp_password = (String) SharedPreferencesUtils.getParam(mActivity, "password", "");

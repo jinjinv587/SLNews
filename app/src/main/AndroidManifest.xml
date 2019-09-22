@@ -85,6 +85,8 @@
 
 
         <activity
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
             android:name="com.jin.slnews.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
