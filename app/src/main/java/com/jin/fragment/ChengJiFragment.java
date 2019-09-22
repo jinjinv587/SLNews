@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jin.adpter.MyListViewAdapter;
@@ -69,6 +70,7 @@ public class ChengJiFragment extends BaseFragment {
      * 密码输入框
      */
     private EditText et_pw;
+    private TextView tv_version;
     /**
      * 得到的成绩信息集合
      */
@@ -220,6 +222,8 @@ public class ChengJiFragment extends BaseFragment {
         et_xh = mActivity.findViewById(R.id.et_xh);
         // 通过id找到界面中的密码输入框EditText
         et_pw = mActivity.findViewById(R.id.et_pw);
+        tv_version = mActivity.findViewById(R.id.tv_version);
+        tv_version.setText(BuildConfig.VERSION_NAME);
         // 得到SharedPreferences中的学号和密码
         String sp_userxh = (String) SharedPreferencesUtils.getParam(mActivity, "userxh", "");
         String sp_password = (String) SharedPreferencesUtils.getParam(mActivity, "password", "");
@@ -250,7 +254,7 @@ public class ChengJiFragment extends BaseFragment {
                 // 查询所有学位课
                 new XeiWeiKeSearchDown(mActivity, sp_userxh, sp_password, handler).getSocre(true);
             } else {
-				System.out.println("SP里面的学位课信息:" + xuewei);
+                System.out.println("SP里面的学位课信息:" + xuewei);
             }
             String sss = CacheUtils.getCache(sp_userxh, mActivity);
 
