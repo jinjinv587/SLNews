@@ -38,9 +38,10 @@
                 android:layout_marginRight="5.0dip"
                 android:layout_toRightOf="@+id/login_username"
                 android:background="@null"
-                android:inputType="number"
                 android:focusableInTouchMode="true"
-                android:singleLine="true" />
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="1602020202" />
         </RelativeLayout>
 
         <View style="@style/my_Line" />
@@ -78,9 +79,9 @@
                 android:layout_toLeftOf="@id/login_switchBtn"
                 android:layout_toRightOf="@id/login_password"
                 android:background="@null"
-
                 android:inputType="textPassword"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="654321" />
         </RelativeLayout>
     </LinearLayout>
 

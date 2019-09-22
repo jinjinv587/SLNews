@@ -200,7 +200,8 @@ public class ChengJiFragment extends BaseFragment {
                     String xuewei = (String) SharedPreferencesUtils.getParam(mActivity, et_xh.getText().toString().trim().substring(0, 6), "");
                     if (xuewei.equals("") || xuewei.length() == 0) {
                         // 查询所有学位课
-                        new XeiWeiKeSearchDown(mActivity, xh, pw, handler).getSocre(true);
+                        // TODO: 2019/9/22  
+//                        new XeiWeiKeSearchDown(mActivity, xh, pw, handler).getSocre(true);
                         isLoading = true;
                         // progressDialog = ProgressDialog.show(mActivity,
                         // "请稍等...", "获取数据中...", true);
@@ -249,7 +250,7 @@ public class ChengJiFragment extends BaseFragment {
                 // 查询所有学位课
                 new XeiWeiKeSearchDown(mActivity, sp_userxh, sp_password, handler).getSocre(true);
             } else {
-//				System.out.println("SharedPreferences里面的学位课信息:" + xuewei);
+				System.out.println("SP里面的学位课信息:" + xuewei);
             }
             String sss = CacheUtils.getCache(sp_userxh, mActivity);
 
