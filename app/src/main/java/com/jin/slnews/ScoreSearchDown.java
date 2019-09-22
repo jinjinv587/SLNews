@@ -79,12 +79,7 @@ public class ScoreSearchDown {
                 // 创建HttpClient对象
                 HttpClient client = new DefaultHttpClient();
                 HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
-
-                // 创建请求方法的实例，并指定请求URL。如果需要发送GET请求，创建HttpGet对象；如果需要发送POST请求，创建HttpPost对象
                 HttpPost httpPost = new HttpPost(uriAPI);
-                // 如果需要发送请求参数，可调用HttpGet、HttpPost共同的setParams(HetpParams
-                // params)方法来添加请求参数；
-                // 对于HttpPost对象而言，也可调用setEntity(HttpEntity entity)方法来设置请求参数。
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
 
                 // 根据表单设置对应的参数
@@ -99,8 +94,6 @@ public class ScoreSearchDown {
                     UrlEncodedFormEntity par = new UrlEncodedFormEntity(params, "GB2312");
                     System.out.println("par=" + par);
                     httpPost.setEntity(new UrlEncodedFormEntity(params, "GB2312"));
-                    // 调用HttpClient对象的execute(HttpUriRequest
-                    // request)发送请求，该方法返回一个HttpResponse
                     responselogin = client.execute(httpPost);
 
                     // 看是否请求成功

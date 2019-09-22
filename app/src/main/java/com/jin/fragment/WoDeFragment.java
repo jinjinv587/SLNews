@@ -13,8 +13,9 @@ import com.jin.slnews.SheZhiActivity;
 import com.jin.utils.AutoUpdate;
 import com.jin.utils.Constant;
 import com.jin.utils.SharedPreferencesUtils;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 public class WoDeFragment extends BaseFragment {
 	@ViewInject(R.id.cb_autoupdate)
@@ -34,7 +35,7 @@ public class WoDeFragment extends BaseFragment {
 	@Override
 	public View initViews() {
 		View view = View.inflate(mActivity, R.layout.fragment_geren, null);
-		ViewUtils.inject(this, view); // 注入view和事件
+		x.view().inject(this, view); // 注入view和事件
 		
 		return view;
 	}

@@ -16,10 +16,6 @@ import android.widget.Toast;
 
 import com.jin.slnews.R;
 import com.jin.views.CustomDialog;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -132,7 +128,7 @@ public class AutoUpdate {
                     public void OnClick(View view) {
                         if (view.getId() == R.id.Dlg_Yes) {
                             dialog.dismiss();// 使对话框消失
-                            download(mActivity);
+
                         } else {
                             dialog.dismiss();
                         }
@@ -165,60 +161,6 @@ public class AutoUpdate {
         dialog.show();
     }
 
-    /**
-     * 下载apk文件
-     */
-    protected static void download(final Activity mActivity) {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-
-            String target = Environment.getExternalStorageDirectory() + "/SLNews" + updateInfo.versionName + ".apk";
-            // XUtils
-            HttpUtils utils = new HttpUtils();
-            utils.download(updateInfo.downLoadUrl, target, new RequestCallBack<File>() {
-
-                // 下载文件的进度, 该方法在主线程运行
-                @Override
-                public void onLoading(long total, long current, boolean isUploading) {
-                    super.onLoading(total, current, isUploading);
-                    System.out.println("下载进度:" + current + "/" + total);
-
-                }
-
-                // 下载成功,该方法在主线程运行
-                @Override
-                public void onSuccess(ResponseInfo<File> arg0) {
-                    System.out.println("下载成功");
-                    // 跳转到系统安装页面
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.addCategory(Intent.CATEGORY_DEFAULT);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Uri contentUri = FileProvider.getUriForFile(mActivity, "com.jin.slnews.fileProvider", arg0.result);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-                    } else {
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.setDataAndType(Uri.fromFile(arg0.result), "application/vnd.android.package-archive");
-                    }
-
-
-                    intent.setDataAndType(Uri.fromFile(arg0.result), "application/vnd.android.package-archive");
-                    // startActivity(intent);
-                    mActivity.startActivityForResult(intent, 0);// 如果用户取消安装的话,
-                    // 会返回结果,回调方法onActivityResult
-                }
-
-                // 下载失败,该方法在主线程运行
-                @Override
-                public void onFailure(HttpException arg0, String arg1) {
-                    Toast.makeText(mActivity, "下载失败!", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Toast.makeText(mActivity, "没有找到sdcard!", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     /**
      * 获取本地app的版本号

@@ -76,6 +76,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -94,8 +95,6 @@
             android:name="com.jin.slnews.HomeActivity"
             android:label="@string/app_name">
         </activity>
-        <activity android:name="com.jin.slnews.BiaoBaiActivity">
-        </activity>
         <activity android:name="com.jin.slnews.CalcActivity">
         </activity>
         <activity android:name="com.jin.slnews.NewsDetailActivity">
@@ -105,26 +104,8 @@
         <activity
             android:name="com.jin.slnews.UpdateDialogActivity"
             android:theme="@android:style/Theme.Dialog" />
-        <service android:name="com.amap.api.location.APSService">
-        </service>
-        <!-- Required SDK核心功能-->
-        <activity
-            android:name="cn.jpush.android.ui.PushActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.jin.slnews" />
-            </intent-filter>
-        </activity>
-        <!-- Required  SDK核心功能-->
-        <service
-            android:name="cn.jpush.android.service.DownloadService"
-            android:enabled="true"
-            android:exported="false" >
-        </service>
+
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -135,61 +116,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
-        <!-- Required SDK 核心功能-->
-        <!-- 可配置android:process参数将PushService放在其他进程中 -->
-        <service
-            android:name="cn.jpush.android.service.PushService"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER" />
-                <action android:name="cn.jpush.android.intent.REPORT" />
-                <action android:name="cn.jpush.android.intent.PushService" />
-                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-            </intent-filter>
-        </service>
 
-        <!-- Required SDK核心功能-->
-        <receiver
-            android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
-                <category android:name="com.jin.slnews" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-            <!-- Optional -->
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
 
-        </receiver>
-        <!-- User defined.  For test only  用户自定义的广播接收器-->
-        <receiver
-            android:name="com.jin.slnews.JGReceiver"
-            android:exported="false"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
-                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
-                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                <category android:name="com.jin.slnews" />
-            </intent-filter>
-        </receiver>
-        <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
-        <!-- Required  . Enable it you can get statistics data with channel -->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="6ec85eafb3f0f5f0b144e2fa" /> <!--  </>值来自开发者平台取得的AppKey-->
 
     </application>
 

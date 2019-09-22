@@ -30,11 +30,11 @@ import com.jin.utils.CacheUtils;
 import com.jin.utils.SharedPreferencesUtils;
 import com.jin.utils.Utils;
 import com.jin.views.CustomDialog;
-import com.lidroid.xutils.ViewUtils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,7 +119,7 @@ public class ChengJiFragment extends BaseFragment {
     @Override
     public View initViews() {
         View view = View.inflate(mActivity, R.layout.fragment_chengji, null);
-        ViewUtils.inject(this, view); // 注入view和事件
+        x.view().inject(this, view); // 注入view和事件
         view.findViewById(R.id.tv_kefu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +128,6 @@ public class ChengJiFragment extends BaseFragment {
                     mActivity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=913214983&version=1")));
                 } else {
                     Toast.makeText(mActivity, "检查到您手机没有安装QQ，请安装后使用该功能", Toast.LENGTH_LONG).show();
-//                    DialogUtils.alertInfo(mActivity, "检查到您手机没有安装QQ，请安装后使用该功能");
                 }
             }
         });
@@ -139,37 +138,12 @@ public class ChengJiFragment extends BaseFragment {
     public void initData() {
         initHandler();
         System.out.println("初始化成绩");
-        if (((String) SharedPreferencesUtils.getParam(mActivity, "120303", "")).isEmpty()) {
-            System.out.println("SP无数据");
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String allxueweike = //"120303=C语言程序设计B,大学英语1,高等数学B1,大学英语2,高等数学B2,线性代数D,电路,模拟电子技术A,大学英语3,数字电子技术A,信号与系统,高频电子电路,大学英语4,数字信号处理,通信系统,单片机原理与接口技术,数字图象处理,计算机网络与通信,DSP技术,DSP技术综合设计,all。" +
-                            "120902=大学英语1,高等数学A1,C语言程序设计,大学英语2,高等数学A2,基础物理学1,现代应用光学,大学英语3,数学物理方法,基础物理学2,大学英语4,物理光学,电子技术基础,光电子学,量子力学,激光原理,光电检测原理与技术,光信息处理,光信息技术实验1,激光器件与技术,光信息技术实验2,all。"
-                                    + "130501=工程制图A1,大学英语1,高等数学D1,工程制图A2,大学英语2,高等数学D2,线性代数D,大学物理C,大学英语3,理论力学B,材料力学性能,金属学与热处理,大学英语4,材料成型原理1,材料成型原理2,铸造工艺,铸造合金与熔炼,铸造设备,塑料成型工艺与模具设计,冲压工艺与模具设计,热成型工艺与模具设计,金属焊接原理与焊接性,焊接方法与设备,焊接结构,砂型铸造工艺课程设计,冲压模具课程设计,焊接工艺课程设计,all。"
-                                    + "120302=C语言程序设计B,大学英语1,高等数学B1,大学英语2,高等数学B2,线性代数D,电路,模拟电子技术A,大学英语3,概率论与数理统计C,数字电子技术A,信号与系统（基础）,大学英语4,传感器与检测技术,单片机原理与接口技术,自动控制原理（基础）,电子测量技术,智能仪器仪表,测控系统综合课程设计,all。"
-                                    + "120101=工程制图B1,大学英语1,高等数学B1,大学英语2,高等数学B2,线性代数D,大学英语3,理论力学B,机械设计A1,电工与电子技术A,大学英语4,材料力学B,机械设计A2,机电传动控制,单片机原理及应用,机械控制工程基础,有限元法,机械系统控制技术,all。"
-                                    + "120901=大学英语1,数学分析1,高等代数1,空间解析几何,大学英语2,数学分析2,高等代数2,C语言程序设计,大学英语3,面向对象程序设计（Java）,数学分析3,大学英语4,概率论与数理统计,常微分方程,数据结构,数据库原理,软件工程,数值分析,算法设计与分析,算法设计与分析课程设计,数学模型,all。"
-                                    + "120501=工程制图A1,大学英语1,高等数学D1,工程制图A2,大学英语2,高等数学D2,线性代数D,大学物理C,大学英语3,理论力学B,材料力学性能,金属学与热处理,大学英语4,材料力学C,材料成型原理1,材料成型原理2,铸造工艺,铸造合金与熔炼,铸造设备,塑料成型工艺与模具设计,冲压工艺与模具设计,热成型工艺与模具设计,金属焊接原理与焊接性,焊接方法与设备,焊接结构,砂型铸造工艺课程设计,冲压模具课程设计,焊接工艺课程设计,all。"
-                                    + "120904=大学英语1,高等数学A1,C语言程序设计,大学英语2,高等数学A2,基础物理学1,现代应用光学,大学英语3,基础物理学2,模拟电路,大学英语4,数学物理方法,物理光学,数字逻辑设计及应用,光信息处理,光电子学,半导体物理与器件,数字图像处理技术,信息显示与光电技术实验1,信息显示与技术,光电成像原理与技术,信息显示与光电技术实验2,all。"
-                                    + "121104=工程制图D,大学英语1,高等数学C1,计算机程序设计,大学英语2,高等数学C2,大学英语3,理论力学B,大学英语4,材料力学C,机械设计B,有限元法及其应用,枪炮内弹道学,武器制造工艺学,气体动力学,火炮测试技术,火炮设计理论,自动武器原理与构造,火炮设计课程设计,all。"
-                                    + "120307=C语言程序设计A,大学英语1,高等数学B1,大学英语2,线性代数D,电路,模拟电子技术A,面向对象程序设计,大学英语3,数字电子技术A,微机原理与汇编语言,大学英语4,数据库原理与应用,单片机,数字系统与VHDL,计算机网络,电子系统设计,专业方向综合实训2,all。";
 
-                    List<String> list = Utils.getList(allxueweike);
-                    for (int i = 0; i < list.size(); i++) {
-                        SharedPreferencesUtils.setParam(mActivity, list.get(i).substring(0, 6), list.get(i).substring(7, list.get(i).length()));
-
-                    }
-                }
-            }).start();
-        } else {
-            System.out.println("SP已有数据");
-        }
         // 设置背景透明度
         mActivity.findViewById(R.id.bg).getBackground().setAlpha(80);
         // 通过id找到界面中的计算按钮
-        calc = (Button) mActivity.findViewById(R.id.calc);
-        Button bt = (Button) mActivity.findViewById(R.id.bt);
+        calc = mActivity.findViewById(R.id.calc);
+        Button bt = mActivity.findViewById(R.id.bt);
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -215,8 +189,12 @@ public class ChengJiFragment extends BaseFragment {
                 if (TextUtils.isEmpty(xh) || TextUtils.isEmpty(pw)) {
                     // 如果为空，则弹出提示并返回
                     Toast.makeText(mActivity, "学号或密码不能为空！", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
+                    if (xh.length() < 10) {
+                        Toast.makeText(mActivity, "请输入正确的学号", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     // 如果不为空，则立即拿此学号和密码去登陆，查询成绩，并保存学号密码到手机
                     new ScoreSearchDown(xh, pw, handler, mActivity).getSocre();
                     String xuewei = (String) SharedPreferencesUtils.getParam(mActivity, et_xh.getText().toString().trim().substring(0, 6), "");
@@ -236,15 +214,15 @@ public class ChengJiFragment extends BaseFragment {
 
         });
         // 通过id找到界面中的listview
-        lv = (ListView) mActivity.findViewById(R.id.lv);
+        lv = mActivity.findViewById(R.id.lv);
         // 通过id找到界面中的学号输入框EditText
-        et_xh = (EditText) mActivity.findViewById(R.id.et_xh);
+        et_xh = mActivity.findViewById(R.id.et_xh);
         // 通过id找到界面中的密码输入框EditText
-        et_pw = (EditText) mActivity.findViewById(R.id.et_pw);
+        et_pw = mActivity.findViewById(R.id.et_pw);
         // 得到SharedPreferences中的学号和密码
         String sp_userxh = (String) SharedPreferencesUtils.getParam(mActivity, "userxh", "");
         String sp_password = (String) SharedPreferencesUtils.getParam(mActivity, "password", "");
-        show = (CheckBox) mActivity.findViewById(R.id.login_switchBtn);
+        show = mActivity.findViewById(R.id.login_switchBtn);
         show.setOnClickListener(new View.OnClickListener() {
 
             @Override

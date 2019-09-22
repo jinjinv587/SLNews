@@ -38,6 +38,7 @@
                 android:layout_marginRight="5.0dip"
                 android:layout_toRightOf="@+id/login_username"
                 android:background="@null"
+                android:inputType="number"
                 android:focusableInTouchMode="true"
                 android:singleLine="true" />
         </RelativeLayout>

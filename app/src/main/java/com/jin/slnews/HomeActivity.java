@@ -6,23 +6,16 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.Toast;
 
-import com.jin.fragment.BiaoBaiFragment;
 import com.jin.fragment.ChengJiFragment;
 import com.jin.fragment.ShouYeFragment;
 import com.jin.fragment.WoDeFragment;
-import com.jin.fragment.ZhaoLingFragment;
 import com.jin.utils.AutoUpdate;
 import com.jin.utils.SharedPreferencesUtils;
 import com.jin.utils.ViewUtils;
-
-import cn.jpush.android.api.JPushInterface;
 
 public class HomeActivity extends FragmentActivity {
     private Fragment[] fragments;
@@ -62,11 +55,9 @@ public class HomeActivity extends FragmentActivity {
         rg_bottom.check(R.id.rb_chengji);// 默认勾选成绩
 
         ShouYeFragment shouYeFragment = new ShouYeFragment();
-        ZhaoLingFragment zhaoLingFragment = new ZhaoLingFragment();
         ChengJiFragment chengJiFragment = new ChengJiFragment();
-        BiaoBaiFragment biaoBaiFragment = new BiaoBaiFragment();
         WoDeFragment woDeFragment = new WoDeFragment();
-        fragments = new Fragment[]{shouYeFragment, zhaoLingFragment, chengJiFragment, biaoBaiFragment, woDeFragment};
+        fragments = new Fragment[]{shouYeFragment,  chengJiFragment,  woDeFragment};
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content, chengJiFragment)
                 //.add(R.id.fl_content, shouYeFragment).hide(shouYeFragment)
                 //.add(R.id.fl_content, biaoBaiFragment).hide(biaoBaiFragment)
@@ -118,21 +109,6 @@ public class HomeActivity extends FragmentActivity {
         }
         return super.onKeyDown(keyCode, event);
 
-    }
-
-    /**
-     * 统计代码
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        JPushInterface.onResume(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JPushInterface.onPause(this);
     }
 
 }
