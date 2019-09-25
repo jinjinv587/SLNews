@@ -1,9 +1,5 @@
 package com.jin.utils;
 
-import android.util.Log;
-
-import com.alibaba.fastjson.JSONObject;
-
 import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
