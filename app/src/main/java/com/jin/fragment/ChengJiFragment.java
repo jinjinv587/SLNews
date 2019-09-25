@@ -21,14 +21,12 @@ import android.widget.Toast;
 
 import com.jin.adpter.MyListViewAdapter;
 import com.jin.domain.ScoreSearchInfo;
-import com.jin.slnews.BuildConfig;
 import com.jin.slnews.CalcActivity;
 import com.jin.slnews.R;
 import com.jin.slnews.ScoreSearchDown;
 import com.jin.slnews.XeiWeiKeSearchDown;
 import com.jin.utils.CacheUtils;
 import com.jin.utils.SharedPreferencesUtils;
-import com.jin.utils.Utils;
 import com.jin.views.CustomDialog;
 
 import org.jsoup.Jsoup;
@@ -38,9 +36,9 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class ChengJiFragment extends BaseFragment {
+    private static final String TAG = "ChengJiFragment";
     /**
      * 访问出错标志
      */
@@ -137,7 +135,7 @@ public class ChengJiFragment extends BaseFragment {
     @Override
     public void initData() {
         initHandler();
-        System.out.println("初始化成绩");
+        Log.e(TAG, "初始化成绩");
 
         // 设置背景透明度
         mActivity.findViewById(R.id.bg).getBackground().setAlpha(80);
@@ -147,7 +145,6 @@ public class ChengJiFragment extends BaseFragment {
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (isLoading) {
                     tiao = true;
                     progressDialog = ProgressDialog.show(mActivity, "请稍等...", "正在加载学位课信息，首次加载会比较慢...", true);
@@ -177,13 +174,7 @@ public class ChengJiFragment extends BaseFragment {
 
             @Override
             public void onClick(View v) {
-                /**
-                 * 得到输入框里面的学号
-                 */
                 final String xh = et_xh.getText().toString().trim();
-                /**
-                 * 得到输入框里面的密码
-                 */
                 final String pw = et_pw.getText().toString().trim();
                 // 判断得到的学号和密码是否为空
                 if (TextUtils.isEmpty(xh) || TextUtils.isEmpty(pw)) {
@@ -198,10 +189,9 @@ public class ChengJiFragment extends BaseFragment {
                     // 如果不为空，则立即拿此学号和密码去登陆，查询成绩，并保存学号密码到手机
                     new ScoreSearchDown(xh, pw, handler, mActivity).getSocre();
                     String xuewei = (String) SharedPreferencesUtils.getParam(mActivity, et_xh.getText().toString().trim().substring(0, 6), "");
-                    if (xuewei.equals("") || xuewei.length() == 0) {
+                    if (TextUtils.isEmpty(xuewei)) {
                         // 查询所有学位课
-                        // TODO: 2019/9/22  
-//                        new XeiWeiKeSearchDown(mActivity, xh, pw, handler).getSocre(true);
+                        new XeiWeiKeSearchDown(mActivity, xh, pw, handler).getSocre(true);
                         isLoading = true;
                         // progressDialog = ProgressDialog.show(mActivity,
                         // "请稍等...", "获取数据中...", true);
@@ -250,7 +240,7 @@ public class ChengJiFragment extends BaseFragment {
                 // 查询所有学位课
                 new XeiWeiKeSearchDown(mActivity, sp_userxh, sp_password, handler).getSocre(true);
             } else {
-				System.out.println("SP里面的学位课信息:" + xuewei);
+                System.out.println("SP里面的学位课信息:" + xuewei);
             }
             String sss = CacheUtils.getCache(sp_userxh, mActivity);
 
