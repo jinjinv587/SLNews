@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.jin.adpter.MyListViewAdapter;
 import com.jin.domain.ScoreSearchInfo;
+import com.jin.slnews.BuildConfig;
 import com.jin.slnews.CalcActivity;
 import com.jin.slnews.R;
 import com.jin.slnews.ScoreSearchDown;
@@ -77,14 +78,8 @@ public class ChengJiFragment extends BaseFragment {
      * 学位课
      */
     private String xueweike = "";
-    /**
-     * 消息机制
-     */
+
     private Button calc;
-    /**
-     * 访问教学计划进度，最大是5
-     */
-    //private int i = 0;
 
     /**
      * 跳转标志

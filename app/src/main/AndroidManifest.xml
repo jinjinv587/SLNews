@@ -99,15 +99,9 @@
         </activity>
         <activity android:name="com.jin.slnews.CalcActivity">
         </activity>
-        <activity android:name="com.jin.slnews.NewsDetailActivity">
-        </activity>
-        <activity android:name="com.jin.slnews.SheZhiActivity">
-        </activity>
         <activity
             android:name="com.jin.slnews.UpdateDialogActivity"
             android:theme="@android:style/Theme.Dialog" />
-
-
 
         <provider
             android:name="android.support.v4.content.FileProvider"
