@@ -5,7 +5,6 @@
     android:background="#99232323" >
 
     <LinearLayout
-        android:id="@+id/update_frame"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -19,7 +18,6 @@
             android:layout_width="fill_parent"
             android:layout_height="40dp" >
             <ImageView
-                android:id="@+id/update_wifi_indicator"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
@@ -35,7 +33,6 @@
                 android:textColor="#008bea" />
 
             <Button
-                android:id="@+id/update_id_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -121,7 +118,6 @@
                 android:textColor="#000" />
 
             <Button
-                android:id="@+id/update_id_ignore"
                 android:visibility="gone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

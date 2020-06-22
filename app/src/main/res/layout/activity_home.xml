@@ -13,7 +13,6 @@
     </FrameLayout>
 
     <RadioGroup
-        android:id="@+id/rg_bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/navbg"
@@ -23,31 +22,26 @@
         android:paddingTop="8dp" >
 
         <RadioButton
-            android:id="@+id/rb_shouye"
             style="@style/nav_rg"
             android:drawableTop="@drawable/btn_tab_shouye_selector"
             android:text="首页" />
 
         <RadioButton
-            android:id="@+id/rb_zhaoling"
             style="@style/nav_rg"
             android:drawableTop="@drawable/btn_tab_paishe_selector"
             android:text="天气" />
 
         <RadioButton
-            android:id="@+id/rb_chengji"
             style="@style/nav_rg"
             android:drawableTop="@drawable/btn_tab_duijiang_selector"
             android:text="成绩" />
 
         <RadioButton
-            android:id="@+id/rb_biaobai"
             style="@style/nav_rg"
             android:drawableTop="@drawable/btn_tab_fabu_selector"
             android:text="表白" />
 
         <RadioButton
-            android:id="@+id/rb_geren"
             style="@style/nav_rg"
             android:drawableTop="@drawable/btn_tab_geren_selector"
             android:text="我的" />
