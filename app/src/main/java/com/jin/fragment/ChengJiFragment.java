@@ -3,7 +3,6 @@ package com.jin.fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Handler;
@@ -103,8 +102,7 @@ public class ChengJiFragment extends BaseFragment {
         if (packageName == null || "".equals(packageName))
             return false;
         try {
-            ApplicationInfo info = context.getPackageManager().getApplicationInfo(packageName,
-                    PackageManager.GET_UNINSTALLED_PACKAGES);
+            context.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;

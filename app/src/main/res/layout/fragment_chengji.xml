@@ -30,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_xh"
+                android:textColor="#333"
                 android:textSize="17.0sp" />
 
             <EditText
@@ -42,7 +43,8 @@
                 android:focusableInTouchMode="true"
                 android:inputType="number"
                 android:maxLength="10"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColor="#333" />
         </RelativeLayout>
 
         <View style="@style/my_Line" />
@@ -60,6 +62,7 @@
                 style="@style/w_c_h_c"
                 android:layout_centerVertical="true"
                 android:text="@string/_passsword"
+                android:textColor="#333"
                 android:textSize="17.0sp" />
 
             <CheckBox
@@ -70,7 +73,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5.0dip"
                 android:button="@drawable/login_hide_password_selector"
-                android:clickable="true" />
+                android:clickable="true"
+                android:textColor="#333" />
 
             <EditText
                 android:id="@+id/et_pw"
@@ -87,7 +91,8 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp">
 
         <Button
             android:id="@+id/bt"
@@ -112,7 +117,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dip"
             android:background="@drawable/button_selector"
             android:text="@string/jisuan"
             android:textColor="@color/white" />
@@ -123,8 +127,9 @@
         android:id="@+id/tv_kefu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="8dp"
-        android:text="客服QQ：913214983(点击发起聊天)"
+        android:text="作者QQ：913214983(点击发起聊天)"
         android:textColor="@color/black" />
 
 
